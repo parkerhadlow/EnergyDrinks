@@ -8,17 +8,32 @@ public class Drink
     private int caffeine;
     private double price;
     private double costToMake;
+    private int stock = 0;
 
     // constructor
-    public Drink(String name, int SKU, int caffeine, double price, double costToMake){
+    public Drink(String name, int SKU, int caffeine, double price, double costToMake, int stock){
         this.name = name;
         this.SKU = SKU;
         this.caffeine = caffeine;
         this.price = price;
         this.costToMake = costToMake;
+        this.stock = stock;
     }
 
     // methods
+    public static void restock(Drink drink, int quantity){
+        drink.setStock(drink.getStock() + quantity);
+        System.out.println("Now there are " + drink.getStock() + " " + drink.getName() + "s in stock.");
+    }
+
+    public static void sell(Drink drink, int quantity){
+        if (drink.getStock() >= quantity){
+            drink.setStock(drink.getStock() - quantity);
+        }
+        else{
+            System.out.println("ERROR! Not enough drinks in stock.");
+        }
+    }
 
 
     //getters
@@ -42,6 +57,10 @@ public class Drink
         return costToMake;
     }
 
+    public int getStock(){
+        return stock;
+    }
+
     //setters
     public void setName(String name){
         this.name = name;
@@ -61,6 +80,10 @@ public class Drink
 
     public void setCostToMake(double cost){
         this.costToMake = cost;
+    }
+
+    public void setStock(int stock){
+        this.stock = stock;
     }
 
 }
