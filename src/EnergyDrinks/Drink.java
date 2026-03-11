@@ -22,13 +22,13 @@ public class Drink
 
     // methods
     public static void restock(Drink drink, int quantity){
-        drink.setStock(drink.getStock() + quantity);
+        drink.setStock(drink.getStock() + quantity); // add to stock
         System.out.println("Now there are " + drink.getStock() + " " + drink.getName() + "s in stock.");
     }
 
     public static void sell(Drink drink, int quantity){
         if (drink.getStock() >= quantity){
-            drink.setStock(drink.getStock() - quantity);
+            drink.setStock(drink.getStock() - quantity); //take drinks out of stock
         }
         else{
             System.out.println("ERROR! Not enough drinks in stock.");
